@@ -48,7 +48,7 @@ class Formulaire extends React.Component {
                         {this.state.length}
                     </div>
 
-                    <button type="submit" onKeyPress="">Envoyer!</button>
+                    <button type="submit" onEnter="">Envoyer!</button>
 
                 </form>
             
