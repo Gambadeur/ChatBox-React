@@ -44,12 +44,16 @@ class Formulaire extends React.Component {
                     >
                     </textarea>
 
-                    <div className="info">
+                    
+
+                    <button type="submit" onEnter="">
+                        <i className="fa fa-paper-plane" aria-hidden="true"></i>
+
+                        Envoyer!</button>
+
+                    {/*<div className="info">
                         {this.state.length}
-                    </div>
-
-                    <button type="submit" onEnter="">Envoyer!</button>
-
+                    </div>*/}
                 </form>
             
         )

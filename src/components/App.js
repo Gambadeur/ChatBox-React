@@ -2,6 +2,8 @@ import React from 'react';
 import Formulaire from './Formulaire';
 import Message from './Message';
 import base from '../base';
+import HeaderBox from './HeaderBox';
+// import ListColor from './LisColor';
 // css
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../animation.css';
@@ -9,7 +11,15 @@ import '../animation.css';
 class App extends React.Component {
 
     state = {
-        messages : {}
+        messages : {},
+        colorMessage : [
+            {id:1, name: 'Rosée du matin', color: '#CBA0AD'},
+            {id:2, name:'marin blue', color:'rgb(43, 77, 153)'},
+            {id:3, name:'pale green', color:'#aafbde'},
+            {id:4, name:'vermillon', color:'#fe532e'},
+            {id:5, name:'sky blue', color:'#82c4fa'},
+            {id:6, name:'salmon', color:'#fb8b8b'},
+        ],
     }
 
     // Synchroniser avec la base de donnée
@@ -42,6 +52,14 @@ class App extends React.Component {
         return pseudo === this.props.params.pseudo;
     }
 
+    changeColor = (item) => {
+    this.setState({
+        nameColor: item
+    })
+
+
+    }
+
     render(){
 
         const messages = Object
@@ -54,7 +72,8 @@ class App extends React.Component {
 
         return (
             <div className="box">
-                <div className="messages" ref={input => this.messages = input}>
+                <HeaderBox changeColor={this.changeColor} colorMessage={this.state.colorMessage}/>
+                <div className="messages" style={{background:this.state.nameColor}} ref={input => this.messages = input}>
                     <ReactCSSTransitionGroup 
                     component="div"
                     className="message"
@@ -65,7 +84,7 @@ class App extends React.Component {
                     {messages}
                     </ReactCSSTransitionGroup>
                 </div>
-                <Formulaire addMessage={this.addMessage} pseudo={this.props.params.pseudo} length="140" />
+                <Formulaire  addMessage={this.addMessage} pseudo={this.props.params.pseudo} length="140" />
             </div>
         )
     }
